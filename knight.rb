@@ -16,9 +16,26 @@ class Knight
         coordinateQueue.shift
         startingPoint = coordinateQueue[0]
       elsif (startingPoint[0] == destinationPoint[0] && startingPoint[1] == destinationPoint[1])
-        found = true
         currentPath << coordinateQueue[0]
-        return currentPath
+        currentPath = currentPath.flatten
+        index = 0
+        newPath = []
+
+        while (index < currentPath.size)
+          coordinate = [currentPath[index], currentPath[index + 1]]
+          newPath.insert(0, coordinate)
+          if (currentPath.size <= index + 1)
+            return newPath
+          end
+          index += 2
+        end
+
+        puts "You made it in #{newPath.size - 1} moves! Here's your path:"
+        newPath.each do |value|
+          p value
+        end
+
+        return
       else
         coordinateQueue.shift
 
@@ -41,4 +58,4 @@ end
 knight = Knight.new
 
 binding.pry
-p knight.knight_moves([3, 3], [4, 3])
+knight.knight_moves([3, 3], [4, 3])
