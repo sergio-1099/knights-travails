@@ -6,7 +6,7 @@ class Knight
     @y = 0
   end
 
-  def knight_moves(startingPoint, destinationPoint, currentPath = [], coordinateQueue = [startingPoint])
+  def self.knight_moves(startingPoint, destinationPoint, currentPath = [], coordinateQueue = [startingPoint])
     found = false
     while (!found)
       @x = startingPoint[0]
@@ -55,7 +55,4 @@ class Knight
   end
 end
 
-knight = Knight.new
-
-binding.pry
-knight.knight_moves([3, 3], [4, 3])
+Knight.knight_moves([3, 3], [4, 3])
